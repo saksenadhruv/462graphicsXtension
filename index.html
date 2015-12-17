@@ -33,8 +33,68 @@
       <section id="main_content" class="inner">
         <hr>
 
+<h2>
+<a id="final-report" class="anchor" href="#final-report" aria-hidden="true"><span class="octicon octicon-link"></span></a>Final Report</h2>
+
+<p>As proposed I implemented a ray tracer with photon mapping.</p>
+
+<p>Extra Credit- Did a twist on photon Mapping, treating stored photons as indirect light sources of b-directional filtering.</p>
+
 <h3>
-<a id="proposal" class="anchor" href="#proposal" aria-hidden="true"><span class="octicon octicon-link"></span></a>Proposal</h3>
+<a id="building-instructions" class="anchor" href="#building-instructions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Building instructions</h3>
+
+<p>fully same drill as asst3 to make
+cd build
+cmake ..
+make
+make install
+./pathtracer -s 64 -t 8 ../dae/sky/CBspheres.dae</p>
+
+<p>best results for 10,000,000 photons and k-NN (k = 64)</p>
+
+<p>over assignment 3 key controls we have also new keys in RENDER mode (should-ve pressed R)</p>
+
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>n/N</td>
+<td>Decrease k or radius</td>
+</tr>
+<tr>
+<td>m/M</td>
+<td>Increase k or radius</td>
+</tr>
+<tr>
+<td>l/L</td>
+<td>num_photons/10</td>
+</tr>
+<tr>
+<td>;/:</td>
+<td>num_photons*10</td>
+</tr>
+<tr>
+<td>j/J</td>
+<td>num_photons*2</td>
+</tr>
+<tr>
+<td>k/K</td>
+<td>toggle k-nn/radial search</td>
+</tr>
+<tr>
+<td>p/P</td>
+<td>toggle bi-directional</td>
+</tr>
+</tbody>
+</table>
+
+<h2>
+<a id="proposal" class="anchor" href="#proposal" aria-hidden="true"><span class="octicon octicon-link"></span></a>Proposal</h2>
 
 <ol>
 <li>I will be working alone, focusing on implementing Photon Mapping in option F: Advanced Monte Carlo Rendering. Reading the wiki I expect it to be a 2 step process. My extension will be implementing these 2 steps fully.
