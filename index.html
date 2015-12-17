@@ -38,6 +38,15 @@
 
 <p>As proposed I implemented a ray tracer with photon mapping.</p>
 
+<pre><code>* First Pass send a packet of photons from the light source and make a cache for results (photons eliminated using Russian Roulette) **Cache modeled as a KD-tree**.
+* Second Pass calculate indirect illumination using photon map. Using **KNN** algo.
+</code></pre>
+
+<h4>
+<a id="results" class="anchor" href="#results" aria-hidden="true"><span class="octicon octicon-link"></span></a>Results</h4>
+
+<p>As can be seen below i get as better results than forward path-tracing as we have** better caustics from the Glass ball** now than path-tracer</p>
+
 <h4>
 <a id="redering-by-photon-mapping" class="anchor" href="#redering-by-photon-mapping" aria-hidden="true"><span class="octicon octicon-link"></span></a>Redering by Photon Mapping</h4>
 
@@ -53,7 +62,7 @@
 
 <p><img src="https://cloud.githubusercontent.com/assets/7463041/11861983/d09398ba-a453-11e5-8f74-b5164dbe3f95.JPG" alt=""></p>
 
-<p>Extra Credit- Did a twist on photon Mapping, treating stored photons as indirect light sources of b-directional filtering.</p>
+<p><strong>Extra Credit- Did a twist on photon Mapping, treating stored photons as indirect light sources of b-directional filtering.</strong></p>
 
 <h3>
 <a id="building-instructions" class="anchor" href="#building-instructions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Building instructions</h3>
@@ -72,7 +81,7 @@
 
 <p>best results for 10,000,000 photons and k-NN (k = 64)</p>
 
-<p>Over assignment 3 key controls we have also new keys in RENDER mode (should've pressed R)</p>
+<p><strong>Over assignment 3 key controls we have also new keys in RENDER mode (should've pressed R)</strong></p>
 
 <table>
 <thead>
