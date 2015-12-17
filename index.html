@@ -36,14 +36,20 @@
 <h2>
 <a id="final-report" class="anchor" href="#final-report" aria-hidden="true"><span class="octicon octicon-link"></span></a>Final Report</h2>
 
-<p>As proposed I implemented a ray tracer with photon mapping.</p>
+<p>As proposed before (proposal at bottom) I implemented a ray tracer with photon mapping.</p>
 
 <ul>
 <li>First Pass send a packet of photons from the light source and make a cache for results (photons eliminated using Russian Roulette) <strong>Cache modeled as a KD-tree</strong>.</li>
 <li>Second Pass calculate indirect illumination using photon map. Using <strong>KNN</strong> algo.</li>
 </ul>
 
-<p><strong>Extra Credit</strong>- Did a twist on photon Mapping, treating stored photons as indirect light sources of bi-directional path-tracing.</p>
+<p><strong>Extra Credit</strong>- Did a twist on photon Mapping, treating stored photons as indirect light sources of bi-directional path-tracing.\</p>
+
+<ul>
+<li><p>Photons store an extra field that is light ray-depth when it was cached</p></li>
+<li><p>It uses the formula <code>(photonMap[i].depth &lt; (total_depth - eye_depth))</code> to select which photons are used as sources at current camera ray depth</p></li>
+<li>Individually it isn't perfect but adding it to forward path-tracing in-direct light can provide a way to get light from small windows.</li>
+</ul>
 
 <h3>
 <a id="building-instructions" class="anchor" href="#building-instructions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Building instructions</h3>
@@ -94,7 +100,7 @@
 </tr>
 <tr>
 <td>k/K</td>
-<td>toggle k-nn/radial search</td>
+<td>toggle k-nn/fixed radial search</td>
 </tr>
 <tr>
 <td>p/P</td>
@@ -113,7 +119,7 @@
 <p>As can be seen below i get as better results than forward path-tracing as we have <strong>better caustics from the Glass ball</strong> now than path-tracer</p>
 
 <h4>
-<a id="redering-by-photon-mapping" class="anchor" href="#redering-by-photon-mapping" aria-hidden="true"><span class="octicon octicon-link"></span></a>Redering by Photon Mapping</h4>
+<a id="rendering-by-photon-mapping-using-4000000-photon-kd-tree-and-32-nn" class="anchor" href="#rendering-by-photon-mapping-using-4000000-photon-kd-tree-and-32-nn" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rendering by Photon Mapping using 4,000,000 photon kd-tree and 32-NN</h4>
 
 <p><img src="https://cloud.githubusercontent.com/assets/7463041/11861597/f895a97e-a44f-11e5-91a0-a846482f3e24.png" alt=""></p>
 
@@ -126,6 +132,37 @@
 <a id="photon-visualization" class="anchor" href="#photon-visualization" aria-hidden="true"><span class="octicon octicon-link"></span></a>Photon Visualization</h4>
 
 <p><img src="https://cloud.githubusercontent.com/assets/7463041/11861983/d09398ba-a453-11e5-8f74-b5164dbe3f95.JPG" alt=""></p>
+
+<h4>
+<a id="design" class="anchor" href="#design" aria-hidden="true"><span class="octicon octicon-link"></span></a>Design</h4>
+
+<ul>
+<li><p>Photons are stored like primitives in a std::vector</p></li>
+<li><p>We use std::sort to make the kd-tree and a short flag field in photons to mark the next dimension of split</p></li>
+<li><p>Leaf size is 1</p></li>
+<li><p>kd-tree gives logN complexity, shot render time of 1,000,000 photons from 5 hours to 2 minutes</p></li>
+</ul>
+
+<h4>
+<a id="improvements-to-be-made" class="anchor" href="#improvements-to-be-made" aria-hidden="true"><span class="octicon octicon-link"></span></a>Improvements to be made</h4>
+
+<ul>
+<li><p>Definitely could adjust the brightness of photon-map calculated radiance, I am using a constant (7) now to multiply to it but would like to fix the math bug behind it.</p></li>
+<li><p>Lack of blue and red wall reflection, we can get some in CB_spheres_lambertian, but not much</p></li>
+<li><p>Lambertian surfaces need a lot more photons, results different with same photons and rendering is much slower. Exploration required</p></li>
+</ul>
+
+<p><img src="https://cloud.githubusercontent.com/assets/7463041/11862948/e3ebf448-a45d-11e5-8bbf-fc172b3bd7e1.png" alt=""></p>
+
+<h4>
+<a id="hacks" class="anchor" href="#hacks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hacks</h4>
+
+<p>1) Magic Constant PHOTON_MAP_BOOST used to correct the low radiance
+      given by photon-map</p>
+
+<p>2) For faster collection of photons russian roulette skipped
+      for MIN_PHOTON_BOUNCES could contribute to above low radiance
+      but not the main factor already checked</p>
 
 <h2>
 <a id="proposal" class="anchor" href="#proposal" aria-hidden="true"><span class="octicon octicon-link"></span></a>Proposal</h2>
