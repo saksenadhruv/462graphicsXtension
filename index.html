@@ -43,27 +43,7 @@
 <li>Second Pass calculate indirect illumination using photon map. Using <strong>KNN</strong> algo.</li>
 </ul>
 
-<h4>
-<a id="results" class="anchor" href="#results" aria-hidden="true"><span class="octicon octicon-link"></span></a>Results</h4>
-
-<p>As can be seen below i get as better results than forward path-tracing as we have <strong>better caustics from the Glass ball</strong> now than path-tracer</p>
-
-<h4>
-<a id="redering-by-photon-mapping" class="anchor" href="#redering-by-photon-mapping" aria-hidden="true"><span class="octicon octicon-link"></span></a>Redering by Photon Mapping</h4>
-
-<p><img src="https://cloud.githubusercontent.com/assets/7463041/11861597/f895a97e-a44f-11e5-91a0-a846482f3e24.png" alt=""></p>
-
-<h4>
-<a id="rendering-without-photon-mapping" class="anchor" href="#rendering-without-photon-mapping" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rendering without Photon Mapping</h4>
-
-<p><img src="https://cloud.githubusercontent.com/assets/7463041/11862133/5cb6acd2-a455-11e5-934b-44e0aec60b52.JPG" alt=""></p>
-
-<h4>
-<a id="photon-visualization" class="anchor" href="#photon-visualization" aria-hidden="true"><span class="octicon octicon-link"></span></a>Photon Visualization</h4>
-
-<p><img src="https://cloud.githubusercontent.com/assets/7463041/11861983/d09398ba-a453-11e5-8f74-b5164dbe3f95.JPG" alt=""></p>
-
-<p><strong>Extra Credit- Did a twist on photon Mapping, treating stored photons as indirect light sources of b-directional filtering.</strong></p>
+<p><strong>Extra Credit</strong>- Did a twist on photon Mapping, treating stored photons as indirect light sources of bi-directional filtering.</p>
 
 <h3>
 <a id="building-instructions" class="anchor" href="#building-instructions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Building instructions</h3>
@@ -126,6 +106,26 @@
 <ul>
 <li>For bi-directional it takes A LOT of time because of the million-photons, suggestion to go to pathtracer.h and make int num_photons = 1000</li>
 </ul>
+
+<h4>
+<a id="results" class="anchor" href="#results" aria-hidden="true"><span class="octicon octicon-link"></span></a>Results</h4>
+
+<p>As can be seen below i get as better results than forward path-tracing as we have <strong>better caustics from the Glass ball</strong> now than path-tracer</p>
+
+<h4>
+<a id="redering-by-photon-mapping" class="anchor" href="#redering-by-photon-mapping" aria-hidden="true"><span class="octicon octicon-link"></span></a>Redering by Photon Mapping</h4>
+
+<p><img src="https://cloud.githubusercontent.com/assets/7463041/11861597/f895a97e-a44f-11e5-91a0-a846482f3e24.png" alt=""></p>
+
+<h4>
+<a id="rendering-without-photon-mapping" class="anchor" href="#rendering-without-photon-mapping" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rendering without Photon Mapping</h4>
+
+<p><img src="https://cloud.githubusercontent.com/assets/7463041/11862133/5cb6acd2-a455-11e5-934b-44e0aec60b52.JPG" alt=""></p>
+
+<h4>
+<a id="photon-visualization" class="anchor" href="#photon-visualization" aria-hidden="true"><span class="octicon octicon-link"></span></a>Photon Visualization</h4>
+
+<p><img src="https://cloud.githubusercontent.com/assets/7463041/11861983/d09398ba-a453-11e5-8f74-b5164dbe3f95.JPG" alt=""></p>
 
 <h2>
 <a id="proposal" class="anchor" href="#proposal" aria-hidden="true"><span class="octicon octicon-link"></span></a>Proposal</h2>
