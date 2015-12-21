@@ -43,10 +43,11 @@
 <li>Second Pass calculate indirect illumination using photon map. Using <strong>KNN</strong> algo.</li>
 </ul>
 
-<p><strong>Extra Credit</strong>- Did a twist on photon Mapping, treating stored photons as indirect light sources of bi-directional path-tracing.\</p>
+<p><strong>Extra Credit</strong>- Did a twist on photon Mapping, treating stored photons as indirect light sources of bi-directional path-tracing.</p>
 
 <ul>
 <li><p>Photons store an extra field that is light ray-depth when it was cached</p></li>
+<li><p>Shadow rays are used to these indirect lighting sources just like direct lighting.</p></li>
 <li><p>It uses the formula <code>(photonMap[i].depth &lt; (total_depth - eye_depth))</code> to select which photons are used as sources at current camera ray depth</p></li>
 <li>Individually it isn't perfect but adding it to forward path-tracing in-direct light can provide a way to get light from small windows.</li>
 </ul>
